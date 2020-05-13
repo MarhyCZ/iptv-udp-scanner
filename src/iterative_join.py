@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 """
 Multicast group scanner.
 Author: Lasse Karstensen <lasse.karstensen@gmail.com>, November 2014
@@ -38,8 +38,9 @@ def join(group):
 
 def multicast_scopes():
     scopes = [
-	IPNetwork("233.252.0.0/14"),
-        IPNetwork("239.0.0.0/8")  # private scope
+        IPNetwork("239.232.0.0/16")
+        # IPNetwork("233.252.0.0/14"),
+        # IPNetwork("239.0.0.0/8")  # private scope
     ]
     shuffle(scopes)
     for scope in scopes:
@@ -83,7 +84,7 @@ def main():
 
     tasks = []
     for x in range(0, CONCURRENT_GROUPS):
-        print("spawning %i", x)
+        print("spawning {}".format(x))
         tasks += [gevent.spawn(poolworker, q)]
 
     q.join()

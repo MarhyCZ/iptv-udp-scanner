@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Logging part of a multicast group scanner.
 
@@ -39,7 +39,7 @@ def print_report():
     now = datetime.datetime.now().isoformat()
     for k, v in state.items():
         if v > 1e3:
-            print("%s\t%s\t%i", now, k, v)
+            print("{}\t{}\t{}".format(now, k, v))
     sys.stdout.flush()
 
 def recv_packet(hdr, data):
